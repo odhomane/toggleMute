@@ -74,4 +74,15 @@ struct Preferences {
             didChange()
         }
     }
+
+    /// When enabled, prevents toggleMute from changing mute state when certain apps
+    /// (Teams, Zoom, etc.) are focused, since they maintain their own independent
+    /// microphone muting that can conflict with system-level muting.
+    var respectAppMutingEnabled: Bool {
+        get { defaults.bool(forKey: #function) }
+        set {
+            defaults.set(newValue, forKey: #function)
+            didChange()
+        }
+    }
 }
